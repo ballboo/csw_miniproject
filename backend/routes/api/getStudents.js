@@ -51,6 +51,7 @@ router.route('/api/getStudents')
       //console.log(pathDB)
       let _Ref = ref.child(pathDB);
       _Ref.set({date: Date(Date.now()),
+                id: data.Students_total,
                 email: obj.email,
                 name: obj.name,
                 psuid: obj.psuid,
@@ -113,6 +114,7 @@ router.route('/api/getStudents/:id')
       let _Ref = ref.child(id);
       _Ref.set({date: Date(Date.now()),
                 email: obj.email,
+                id: parseInt(req.params.id),
                 name: obj.name,
                 psuid: obj.psuid,
                 tel: obj.tel})

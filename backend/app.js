@@ -16,5 +16,4 @@ app.use(routes.login)
 app.use(routes.getStudents)
 
 
-
 module.exports = app
