@@ -14,6 +14,6 @@ const routes = require('./routes')
 app.use(routes.test)
 app.use(routes.login)
 app.use(routes.getStudents)
-
+app.use(routes.email)
 
 module.exports = app

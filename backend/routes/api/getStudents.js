@@ -27,6 +27,7 @@ router.route('/api/getStudents')
       data.path = '/api/getStudents'
       data.method ='GET'
       data=snapshot.val()
+      
 
       res.status(200).send(data)
     
@@ -44,14 +45,13 @@ router.route('/api/getStudents')
       data.path = '/api/getStudents'
       data.method ='POST'
       data = snapshot.val()
-      data.Students_total = snapshot.val().Students.length
-      
-      pathDB = 'Students/'+data.Students_total
+      data.Students_total = data.students.length
+      pathDB = 'students/'+ data.Students_total
       //console.log(obj)
       //console.log(pathDB)
       let _Ref = ref.child(pathDB);
       _Ref.set({date: Date(Date.now()),
-                id: data.Students_total,
+                id: parseInt(data.Students_total),
                 email: obj.email,
                 name: obj.name,
                 psuid: obj.psuid,
@@ -75,7 +75,7 @@ router.route('/api/getStudents/:id')
    .get((req, res) => {
 
       let data ={students:[]}
-      let pathDB = '/Students/'+ req.params.id
+      let pathDB = '/students/'+ req.params.id
       //console.log(pathDB)
       let db = firebaseadmin.database();
       let ref = db.ref(pathDB);
@@ -96,7 +96,7 @@ router.route('/api/getStudents/:id')
    .post((req, res) => {
       let obj = req.body
       let data ={}
-      let pathDB = '/Students/'
+      let pathDB = '/students/'
       let id = req.params.id
       let db = firebaseadmin.database();
       let ref = db.ref(pathDB);
@@ -124,7 +124,7 @@ router.route('/api/getStudents/:id')
       message.message = 'Update Complete!'
       message.path = '/api/getStudents'
       message.method ='POST'
-      message.insert = 'Students/'+ req.params.id
+      message.insert = 'students/'+ req.params.id
       
       res.status(200).send(message)
     
@@ -136,7 +136,7 @@ router.route('/api/getStudents/:id')
 
         let id = req.params.id
         let db = firebaseadmin.database();
-        let _Ref = db.ref('/Students/' + id);
+        let _Ref = db.ref('/students/' + id);
         
         _Ref.remove()
 
@@ -145,7 +145,7 @@ router.route('/api/getStudents/:id')
         message.message = 'Delete Complete!'
         message.path = '/api/getStudents'
         message.method ='DELETE'
-        message.delete = 'Students/'+ req.params.id
+        message.delete = 'students/'+ req.params.id
       
         res.status(200).send(message)
     })
