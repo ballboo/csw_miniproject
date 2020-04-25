@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import StudentCard from './components/StudentCard'
-import StudentList from './components/StudentList'
-import InputForm from './components/InputForm';
+import React from "react";
+import IndexRoute from './components/IndexRoute'
 
-export default () => {
-
+const App = () => {
   return (
     <div>
-      <h2>Students</h2>
-      <StudentList  />
-      <InputForm />
+      <IndexRoute />
     </div>
-  )
-}
+  );
+};
+export default App ;

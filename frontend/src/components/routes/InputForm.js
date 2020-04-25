@@ -10,7 +10,7 @@ const InputForm = props => {
     const form = useSelector(state => state.form)
 
     const addStudent = async () => {
-        const result = await axios.post(`http://localhost:8080/api/getStudents/`, form)
+        const result = await axios.post(`https://api-miniproject.herokuapp.com/api/getStudents/`, form)
         dispatch({ 
             type: "ADD_STUDENT", 
             students: {...form,id:students.length > 0 ? students[students.length - 1].id+1 : 0} 
