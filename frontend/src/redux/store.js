@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux'
-import { act } from 'react-dom/test-utils';
+// import { act } from 'react-dom/test-utils';
 
 const initialForm = {
     name: "",
@@ -15,6 +15,7 @@ const formReducer = (data = initialForm, action) => {
         case "CHANGE_TEL": return { ...data, tel: action.tel }
     }
     return data; //less than return itSelf
+
 }
 
 const studentReducer = (students = [], action) => {

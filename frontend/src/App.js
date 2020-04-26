@@ -1,10 +1,12 @@
 import React from "react";
-import IndexRoute from './components/IndexRoute'
+
+import RouterLogin from './components/Login1'
+import Navbar from './components/Navbar'
 
 const App = () => {
   return (
     <div>
-      <IndexRoute />
+      <RouterLogin />
     </div>
   );
 };

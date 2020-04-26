@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../css/App.css";
 import psuImg from "../../img/Logo-PSU-EH-01.png";
@@ -25,7 +25,6 @@ function Login() {
         alert('Login Succuss')
         setRedirect(true)
         
-       
         // this.setstate({ redirect : true })
 
       }
@@ -42,21 +41,18 @@ function Login() {
 				console.log(error)
 			})
   }
-  const checkRedirect = (status) =>{
-
-    // console.log("200"); 
-    // console.log(status)
-    if(status){
-      return (
-      <Redirect from='/login' to={{pathname: '/login/profile',  state: { token: token }}}></Redirect>
-        
-      )
+    const checkRedirect = (status) =>{
+      if(status){
+        return (<Redirect from='/login' to={{pathname: '/login/profile',  state: { token: token }}}></Redirect>)
+      }
+      else{
+        return status
+      }
     }
-    else{
-      return status
-    }
-  }
-
+  React.useEffect(() =>{
+    localStorage.setItem('Token',token)
+  },[token])
+ 
   return (
     <div className="App ">
       {checkRedirect(redirect)}
@@ -66,7 +62,7 @@ function Login() {
         <div className="card">
         <div className="card-body">
           <img className="mb-4" src={psuImg} alt="psu" width="30%" />
-          <h3 className="card-title">PSU Passport</h3>
+         
           <form className="form-signin">
           <div className="input-group mb-3">
             <div className="input-group-prepend">
@@ -97,11 +93,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-            <div className="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me" /> Remember me
-              </label>
-            </div>
+            
             <button className="btn btn-lg btn-primary btn-block" type="submit" onClick={loginPSU}>
               Sign in
             </button>

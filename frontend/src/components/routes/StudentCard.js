@@ -16,7 +16,7 @@ const StudentCard = props => {
   }
     return (
         <div className='container'>
-            <div class="card text-white bg-dark mb-3" >
+            <div class="card bg-light mb-3" >
             <div class="card-header">Student ID: {props.psuid}</div>
             <div class="card-body">
                 <p className='bearcard-name'>Name: {props.name}</p>

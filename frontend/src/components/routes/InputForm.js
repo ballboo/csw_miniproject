@@ -18,43 +18,45 @@ const InputForm = props => {
     }
 
     return (
-        <div className='form-container'>
+        <div className='container'>
+            <div className="card-body">
             <h2>Add students</h2>
             <table>
                 <tbody>
                     <tr>
                         <td>PSU Passport</td>
                         <td>
-                            <input className='inpt' type="number" onChange={(e) => dispatch({ type: "CHANGE_PSUID", psuid: e.target.value })} />
+                            <input className='form-control' type="number" onChange={(e) => dispatch({ type: "CHANGE_PSUID", psuid: e.target.value })} />
                         </td>
                     </tr>
                     <tr>
                         <td>Name</td>
                         <td>
-                            <input className='inpt' type="text" onChange={(e) => dispatch({ type: "CHANGE_NAME", name: e.target.value })} />
+                            <input className='form-control' type="text" onChange={(e) => dispatch({ type: "CHANGE_NAME", name: e.target.value })} />
                         </td>
                     </tr>
                     
                     <tr>
                         <td>Email</td>
                         <td>
-                            <input className='inpt' type="text" onChange={(e) => dispatch({ type: "CHANGE_EMAIL", email: e.target.value })} /> <br />
+                            <input className='form-control' type="text" onChange={(e) => dispatch({ type: "CHANGE_EMAIL", email: e.target.value })} /> 
                         </td>
                     </tr>
                     <tr>
                         <td>Tel</td>
                         <td>
-                            <input className='inpt' type="text" onChange={(e) => dispatch({ type: "CHANGE_TEL", tel: e.target.value })} /> <br />
+                            <input className='form-control' type="text" onChange={(e) => dispatch({ type: "CHANGE_TEL", tel: e.target.value })} /> <br />
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <button className='btn' onClick={addStudent}>CREATE</button>
+                            <button className='btn btn-primary' onClick={addStudent}>CREATE</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            </div>
         </div>
     )
 }

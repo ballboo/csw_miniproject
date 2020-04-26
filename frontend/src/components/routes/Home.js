@@ -1,6 +1,5 @@
 import React from 'react';
 // eslint-disable-next-line
-import { BrowserRouter as  Route,Link } from "react-router-dom"
 
 import '../../css/App.css';
 import ENG from '../../img/Logo-PSU-EN.png';
@@ -21,11 +20,10 @@ function Home() {
   
  		
  		<div>
- 		<Link to="/login"> 
+ 	
  		<br/><br/><br/>
- 		<button type="button" className="btn btn-outline-primary btn-lg">SignIn</button>
+ 		<button type="button" className="btn btn-outline-primary btn-lg" >Sign in</button>
  		<br/><br/><br/>
- 		</Link>  
  		</div>
       
     </div>
