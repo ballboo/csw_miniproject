@@ -57,7 +57,7 @@ function Login1(props) {
   return (
     <div className="container text-center">
       <form className="form-signin">
-        <img className="mb-4" src={psuImg} alt="psu" width="60%" />
+        <img className="mb-4" src={psuImg} alt="psu" height="10%" />
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text" id="basic-addon1">

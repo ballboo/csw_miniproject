@@ -1,5 +1,7 @@
 import React, {useState, useEffect } from 'react'
 import axios from 'axios'
+import '../../css/SendEmail.css'
+import '../../css/App.css'
 
 
 
@@ -8,25 +10,39 @@ const SendEmail = (props) => {
     const [email, setEmail] = useState('');
     const [detail, setDetail] = useState('');
     const [token, setToken] = React.useState(localStorage.getItem('Token'));
-    const [redirect, setRedirect] = useState(false);
+    const [getAllEmail, setGetAllEmail] = useState([]);
 
 
 
-      
-  const checkToken = async() => {
-    let result = await axios.post('https://api-miniproject.herokuapp.com/api/login/token','',{
-      headers: {
-      'Content-Type': 'application/json',
-      'Authorization':'Bearer ' + token
-    }})
-    console.log(result)
-    if (result.data.code === 401){
-        setRedirect(true)
-    }
+  
+  
+  const getSendAllEmail = async () => {
+    const result = await axios.get(` https://api-miniproject.herokuapp.com/api/getStudents`)
+    const  AllEmail = result.data.students ;
+    setGetAllEmail(AllEmail)
+    // const totalAllEmail = AllEmail.map((AllEmail) =>{return AllEmail.email})
+    // AllEmail.map((AllEmail) =>{
+    //     setEmail(AllEmail)
+    //     axios.post(`https://api-miniproject.herokuapp.com/api/SendEmail`, {subject, email , detail})
+    //     .then(res => {
+    //         console.log(res)
+    //     })
+    // })
+    // alert("send sucsses")
+   
   }
+  const SendToAllEmail = () =>{
+    getAllEmail.map(async(AllEmail) =>{
+        await axios.post(`https://api-miniproject.herokuapp.com/api/SendEmail`, {subject, email:AllEmail.email , detail})
+        .then(res => {
+            console.log(res)
+        })
+        })
+    alert("send sucsses")
 
-    const SendToEmail = async(e) => {
-        console.log(subject)
+  }
+  
+    const SendToEmail = async (e) => {
         e.preventDefault()
         await axios.post(`https://api-miniproject.herokuapp.com/api/SendEmail`, {subject, email , detail})
         .then(res => {
@@ -34,42 +50,44 @@ const SendEmail = (props) => {
         })
         alert("send sucsses")
     }
+    
 
     useEffect(()=>{
-        checkToken()
+        getSendAllEmail()
      },)
 
 
     return (
-        <div>
-          <div className="row">
-           
-              <div className="container">
-              <table>
-              <tbody>
-                  <tr>
-                      <td>Send to:</td>
-                      <td> <input className="form-control"  type="text"  placeholder="Send to " onChange={(e) => setEmail(e.target.value) } /> <br/></td>
-                  </tr>
-                  <tr>
-                      <td>Subject:</td>
-                      <td><input  className="form-control" type="text"   placeholder="Subject" onChange={(e) => setSubject(e.target.value) } /> <br/></td>
-                  </tr>
-                  <tr>
-                      <td> Message:</td>
-                      <td>  
-                          <textarea className="form-control" rows="3" aria-label="With textarea" onChange={(e) => setDetail(e.target.value) }></textarea>
-                        </td>
-                  </tr>
-                  <tr>
-                      <td><button type="button"  className='btn btn-outline-primary' onClick={SendToEmail}> Send Email </button></td>
-                  </tr>
-              </tbody>
-          </table>
-              </div>
-             
-          </div>
-           
+        <div className="App">
+            <div className="container">
+                <div className="mb-10 pt-10">
+                    <div class="form-group row">
+                        <label className="col-sm-2 col-form-label ">Send to:</label>
+                        <div className="col-sm-7">
+                            <input type="text" className="form-control"  placeholder="Email"  onChange={(e) => setEmail(e.target.value) } /> 
+                        
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label ">Subject:</label>
+                        <div className="col-sm-7">
+                            <input type="text" className="form-control"  placeholder="Subject"  onChange={(e) => setSubject(e.target.value) } />
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label ">Send to:</label>
+                        <div class="col-sm-7">
+                            <textarea type="text" className="form-control"  rows="3" aria-label="With textarea" onChange={(e) => setDetail(e.target.value) } />
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                            <div className="col-sm-5">
+                                <button type="button" className="btn btn-outline-primary" onClick={SendToEmail}>SendEmail</button>
+                            </div>
+                            <button type="button" className="btn btn-outline-primary" onClick={SendToAllEmail}>SendEmail To All Students</button>
+                    </div>
+                    </div>
+            </div>
         </div>
     )
 }

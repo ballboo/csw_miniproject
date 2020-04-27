@@ -1,57 +1,56 @@
-import React,{useState, useEffect} from 'react';
-import '../../css/App.css';
-import axios from 'axios'
-
-
-
+import React, { useState, useEffect } from "react";
+import "../../css/App.css";
+import axios from "axios";
+import Profile_img from '../../img/profile.png'
 
 function Profile() {
-  const [psuid, setPsuid] = useState('');
-  const [name, setName] = useState(''); 
+  const [psuid, setPsuid] = useState("");
+  const [name, setName] = useState("");
   const [data, setData] = useState([]);
-  const [pid, setPid] = useState("") ;
-  const [token, setToken] = React.useState(localStorage.getItem('Token'));
+  const [pid, setPid] = useState("");
+  const [token, setToken] = React.useState(localStorage.getItem("Token"));
   const [redirect, setRedirect] = useState(false);
 
- 
   const checkToken = async () => {
-    let result = await axios.post('https://api-miniproject.herokuapp.com/api/login/token','',{
-      headers: {
-      'Content-Type': 'application/json',
-      'Authorization':'Bearer ' + token
-    }})
-    console.log(result)
-    if (result.data.code === 401){
-      setRedirect(true)
-      
+    let result = await axios.post(
+      "https://api-miniproject.herokuapp.com/api/login/token",
+      "",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    console.log(result);
+    if (result.data.code === 401) {
+    } 
+    else {
+      setPid(result.data.data.pid);
+      setPsuid(result.data.data.psupassport);
+      setName(result.data.data.name);
     }
-    else{
-      setPid(result.data.data.pid)
-      setPsuid(result.data.data.psupassport)
-      setName(result.data.data.name)
-    }
- 
-  }
- 
+  };
 
-  const printData = () => {
-    return(
-      <div>
-         {psuid} : {name} : {pid}
-      </div>
-    )
-  }
-  useEffect(() => { 
-     checkToken()
-     
-  },)
-
+  useEffect(() => {
+    checkToken();
+  });
 
   return (
-    <div className="App"> 
-    {printData()}
-        <br/><br/>  
-
+    <div className="container">
+      <div className="card" width="50%">
+        <h5 className="App card-header">Profile</h5>
+        <div className="card-body">
+          <div className="media">
+            <img src={Profile_img} className="align-self-center mr-3" alt="img_profiie" height="120" />
+            <div className="media-body">
+              <p className='bearcard-name'>Name : {name}</p>
+              <p className='bearcard-name'>PSU Passport : {psuid}</p>
+              <p className='bearcard-name'>Passport : {pid}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
