@@ -21,7 +21,7 @@ export default function Nav(props) {
       <div>
         <nav className="navbar-dark bg-dark">
           <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm " >
-            <h5 className="my-0 mr-md-auto font-weight-normal">Alert Student</h5>
+            <h5 className="my-0 mr-md-auto font-weight-normal">Alert & Database Student</h5>
             <Link type="button"  to="/Home"><a className="p-2 text-dark">Home</a></Link>&nbsp;
             <Link type="button" to="/Student"><a className="p-2 text-dark">Students</a></Link>&nbsp;
             <Link type="button"  to="/SendEmail"><a className="p-2 text-dark">SendEmail</a></Link>&nbsp;
