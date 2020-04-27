@@ -1,12 +1,13 @@
 import React from "react";
+import './css/App.css'
 
-import RouterLogin from './components/Login1'
+import RouterLogin from './components/Login'
 import Navbar from './components/Navbar'
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
+    <div className="App App-text example" >
+      <Navbar  />
     </div>
   );
 };

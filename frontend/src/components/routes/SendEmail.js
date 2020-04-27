@@ -12,10 +12,7 @@ const SendEmail = (props) => {
     const [token, setToken] = React.useState(localStorage.getItem('Token'));
     const [getAllEmail, setGetAllEmail] = useState([]);
 
-
-
-  
-  
+    
   const getSendAllEmail = async () => {
     const result = await axios.get(` https://api-miniproject.herokuapp.com/api/getStudents`)
     const  AllEmail = result.data.students ;
@@ -81,7 +78,7 @@ const SendEmail = (props) => {
                         </div>
                     </div>
                     <div className="form-group row">
-                            <div className="col-sm-5">
+                            <div className="col-sm-5" style={{maxWidth: "20%"}}>
                                 <button type="button" className="btn btn-outline-primary" onClick={SendToEmail}>SendEmail</button>
                             </div>
                             <button type="button" className="btn btn-outline-primary" onClick={SendToAllEmail}>SendEmail To All Students</button>

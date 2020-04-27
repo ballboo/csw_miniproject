@@ -6,7 +6,7 @@ import person from "../img/person.svg";
 import key from "../img/key.svg";
 import Navbar from "./Navbar";
 
-function Login1(props) {
+function Login(props) {
   const [redirect, setRedirect] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -57,7 +57,7 @@ function Login1(props) {
   return (
     <div className="container text-center">
       <form className="form-signin">
-        <img className="mb-4" src={psuImg} alt="psu" height="10%" />
+        <img className="mb-4" src={psuImg} alt="psu" height="150" />
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text" id="basic-addon1">
@@ -99,4 +99,4 @@ function Login1(props) {
   );
 }
 
-export default Login1;
+export default Login;

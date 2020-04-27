@@ -5,6 +5,7 @@ const StudentCard = props => {
 
     const dispatch = useDispatch()
     const form = useSelector(state => state.form)
+    
     const deleteStudent = async () => {
         const result = await axios.delete(` https://api-miniproject.herokuapp.com/api/getStudents/${props.id}`)
         dispatch({type : 'DELETE_STUDENT', id: props.id})
@@ -23,7 +24,7 @@ const StudentCard = props => {
                 <p className='bearcard-name'>Email: {props.email}</p>
                 <p className='bearcard-name'>Tel: {props.tel}</p>
 
-            <div className='bearcard-actions'>
+            <div>
                 <button className="btn btn-success btn-lg btn-block" onClick={updateStudent}>Update</button>
                 <button className="btn btn-danger btn-lg btn-block" onClick={deleteStudent}>Delete</button>
             </div>

@@ -8,7 +8,6 @@ import '../../css/StudentList.css'
 const StudentList = props => {
     const students = useSelector(state => state.students);
     const dispatch = useDispatch();
-    const [redirect, setRedirect] = useState(false);
 
 
 

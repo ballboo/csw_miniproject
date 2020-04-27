@@ -37,16 +37,16 @@ function Profile() {
   });
 
   return (
-    <div className="container">
-      <div className="card" width="50%">
-        <h5 className="App card-header">Profile</h5>
+    <div className="container" style={{maxWidth: "500px"}} >
+      <div className="card " >
+        <h5 className="card-header">Profile</h5>
         <div className="card-body">
           <div className="media">
             <img src={Profile_img} className="align-self-center mr-3" alt="img_profiie" height="120" />
-            <div className="media-body">
-              <p className='bearcard-name'>Name : {name}</p>
-              <p className='bearcard-name'>PSU Passport : {psuid}</p>
-              <p className='bearcard-name'>Passport : {pid}</p>
+            <div>
+              <p >Name : {name}</p>
+              <p >PSU Passport : {psuid}</p>
+              <p >Passport : {pid}</p>
             </div>
           </div>
         </div>
