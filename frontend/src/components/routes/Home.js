@@ -2,7 +2,6 @@ import React from 'react';
 // eslint-disable-next-line
 
 import '../../css/App.css';
-import ENG from '../../img/Logo-PSU-EN.png';
 import PSU from '../../img/Logo-PSU-EH-01.png'
 
 

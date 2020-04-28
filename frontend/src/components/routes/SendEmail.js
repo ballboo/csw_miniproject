@@ -9,7 +9,6 @@ const SendEmail = (props) => {
     const [subject, setSubject] = useState(''); 
     const [email, setEmail] = useState('');
     const [detail, setDetail] = useState('');
-    const [token, setToken] = React.useState(localStorage.getItem('Token'));
     const [getAllEmail, setGetAllEmail] = useState([]);
 
     
@@ -17,16 +16,7 @@ const SendEmail = (props) => {
     const result = await axios.get(` https://api-miniproject.herokuapp.com/api/getStudents`)
     const  AllEmail = result.data.students ;
     setGetAllEmail(AllEmail)
-    // const totalAllEmail = AllEmail.map((AllEmail) =>{return AllEmail.email})
-    // AllEmail.map((AllEmail) =>{
-    //     setEmail(AllEmail)
-    //     axios.post(`https://api-miniproject.herokuapp.com/api/SendEmail`, {subject, email , detail})
-    //     .then(res => {
-    //         console.log(res)
-    //     })
-    // })
-    // alert("send sucsses")
-   
+    
   }
   const SendToAllEmail = () =>{
     getAllEmail.map(async(AllEmail) =>{
@@ -58,6 +48,7 @@ const SendEmail = (props) => {
         <div className="App">
             <div className="container">
                 <div className="mb-10 pt-10">
+                    <h1>SendEmail</h1>
                     <div class="form-group row">
                         <label className="col-sm-2 col-form-label ">Send to:</label>
                         <div className="col-sm-7">

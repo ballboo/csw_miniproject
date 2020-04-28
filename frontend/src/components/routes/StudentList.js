@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import StudentCard from './StudentCard';
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
@@ -8,9 +8,6 @@ import '../../css/StudentList.css'
 const StudentList = props => {
     const students = useSelector(state => state.students);
     const dispatch = useDispatch();
-
-
-
 
     const getStudents = async () => {
         const result = await axios.get(` https://api-miniproject.herokuapp.com/api/getStudents`)
@@ -29,7 +26,7 @@ const StudentList = props => {
         return (<div><h2>No students</h2> <InputForm /></div>)
     
     return (
-        <>
+        <div>
             <div className='list-container'>
                 {
                     students.map((students, index) => (
@@ -41,7 +38,7 @@ const StudentList = props => {
                 
             </div>
         <InputForm />
-        </>
+        </div>
     )
 }
 

@@ -7,7 +7,6 @@ import key from "../img/key.svg";
 import Navbar from "./Navbar";
 
 function Login(props) {
-  const [redirect, setRedirect] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
@@ -24,7 +23,6 @@ function Login(props) {
         setToken(response.data.token);
         if (response.data.code === 200) {
           alert("Login Succuss");
-          setRedirect(true);
         } else if (response.data.code === 401) {
           alert("Username or password is incorrect");
         } else {

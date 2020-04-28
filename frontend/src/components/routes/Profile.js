@@ -6,10 +6,8 @@ import Profile_img from '../../img/profile.png'
 function Profile() {
   const [psuid, setPsuid] = useState("");
   const [name, setName] = useState("");
-  const [data, setData] = useState([]);
   const [pid, setPid] = useState("");
   const [token, setToken] = React.useState(localStorage.getItem("Token"));
-  const [redirect, setRedirect] = useState(false);
 
   const checkToken = async () => {
     let result = await axios.post(

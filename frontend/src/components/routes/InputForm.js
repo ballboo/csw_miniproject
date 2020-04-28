@@ -4,8 +4,6 @@ import axios from 'axios'
 import '../../css/App.css'
 
 const InputForm = props => {
-    const { data, onChange } = props;
-
     const dispatch = useDispatch({})
     const students = useSelector(state => state.students)
     const form = useSelector(state => state.form)

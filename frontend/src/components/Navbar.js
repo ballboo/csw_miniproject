@@ -16,6 +16,7 @@ export default function Nav(props) {
     props.setlogout(setLogout)
 
   } 
+  
   return (
     <Router >
       <div>
@@ -44,8 +45,10 @@ export default function Nav(props) {
           <Route path="/Home">
             <Home />
           </Route>
+          <Route path="/">
+            <Home />
+          </Route>
         </Switch>
-
       </div>
     </Router>
   );
