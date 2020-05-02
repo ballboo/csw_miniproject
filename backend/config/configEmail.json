@@ -2,6 +2,6 @@
 	"service": "gmail",
   		"auth": {
     			"user": "akaflysky123@gmail.com",
-    			"pass": "flysky123"
+    			"pass": ""
   		}
 }
